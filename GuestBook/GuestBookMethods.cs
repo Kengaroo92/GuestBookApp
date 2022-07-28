@@ -19,12 +19,19 @@ namespace GuestBook
 
         public static void GuestNames()
         {
-            string? guestName = Console.ReadLine();
+            string? guestFirstName = Console.ReadLine();
             List<string>? guestNames = new List<string>();
 
-            guestNames.Add(guestName);
+            guestNames.Add(guestFirstName);
 
-            Console.WriteLine($"Thank you {guestName}, how many family members are joining you tonight?");
+            Console.WriteLine($"What is your last name {guestFirstName}? ");
+
+            string? guestLastName = Console.ReadLine();
+            List<string>? guestLastNames = new List<string>();
+
+            guestLastNames.Add(guestLastName);
+
+            Console.WriteLine($"Thank you {guestFirstName + " " + guestLastName}, how many family members are joining you tonight?");
 
             string? countText = Console.ReadLine();
             bool countParse = int.TryParse(countText, out int familyCount);
@@ -52,7 +59,7 @@ namespace GuestBook
             Console.WriteLine("Their names are: ");
             foreach (string name in guestNames)
             {
-                Console.WriteLine(name);
+                Console.WriteLine(name + " " + guestLastName);
             }
         }
 
