@@ -28,7 +28,7 @@ namespace GuestBook
 
             string? guestLastName = Console.ReadLine();
             List<string>? guestLastNames = new List<string>();
-
+            //Add last names to List to count total families at the party later on.
             guestLastNames.Add(guestLastName);
 
             Console.WriteLine($"Thank you {guestFirstName + " " + guestLastName}, how many family members are joining you tonight?");
