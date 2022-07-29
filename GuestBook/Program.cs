@@ -2,17 +2,10 @@
 
 //Keep in mind DRY. Don't Repeat Yourself - Use as many methods as you can to avoid repeat code.
 
-int totalGuests = 0;
-string continueLooping;
-
 GuestLogic.WelcomeMessage();
 
-do
-{
-    string partyName = GuestLogic.GetPartyName();
+(List<string> guests, int totalGuests) = GuestLogic.GetAllGuests();
 
-    totalGuests += GuestLogic.GetPartySize();
+GuestLogic.DisplayGuests(guests);
 
-    Console.Write("Are there more guests coming (yes/no): ");
-    continueLooping = Console.ReadLine();
-} while (continueLooping.ToLower() == "yes");
+GuestLogic.DisplayGuestsCount(totalGuests);
