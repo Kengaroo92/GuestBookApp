@@ -7,12 +7,30 @@ Console.WriteLine("We like to keep track of all of our guests in this applicatio
 Console.WriteLine("Before you come in and have a good time, can you tell me your name?");
 Console.Write("Enter your name: ");
 
-do
-{
-    GuestBookMethods.GuestNames();
-} while (GuestBookMethods.MoreGuests() == "yes");
+GuestBookMethods.GuestNames();
 
-GuestBookMethods.GuestCount();
+List<int> totalGuestCount = new List<int>();
+
+int guestCount = GuestBookMethods.GuestNames().Count;
+
+totalGuestCount.Add(guestCount);
+
+GuestBookMethods.MoreGuests();
+
+while (GuestBookMethods.MoreGuests() == "yes")
+{
+    Console.WriteLine("Welcome new guest. What is your name?");
+    Console.Write("Enter your name: ");
+    GuestBookMethods.GuestNames();
+}
+
+for (int i = 0; i < guestCount; i++)
+{
+    totalGuestCount.Add(i);
+}
+
+Console.WriteLine($"That's it. We have {GuestBookMethods.GuestCount().Count} guests at the party.");
+Console.WriteLine("Let the party begin!");
 
 
 

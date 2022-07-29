@@ -8,9 +8,9 @@ namespace GuestBook
 {
     public static class GuestBookMethods
     {
-        public static (List<string>, int) GuestNames()
+        public static List<string> GuestNames()
         {
-            List<string> guestNames = new List<string>();
+            List<string> guestNames = new List<string>().ToList();
 
             string guestName = Console.ReadLine();
 
@@ -27,23 +27,25 @@ namespace GuestBook
                 guestNames.Add(guest);
             }
 
-            Console.WriteLine($"So far you have added {guestNames} in the guest book.");
+            Console.WriteLine($"So far you have added {guestNames.Count} guests in the guest book.");
 
-            return (guestNames, guestNames.Count);
+            return guestNames;
         }
 
         public static List<int> GuestCount()
         {
-            List<int> guestCount = new List<int>();
+            List<int> totalGuestCount = new List<int>();
 
-            for (int i = 0; i < GuestNames().Item2; i++)
+            int guestMethodCount = GuestNames().Count;
+
+            for (int i = 0; i < guestMethodCount; i++)
             {
-                guestCount.Add(i);
+                totalGuestCount.Add(i);
             }
 
-            Console.WriteLine($"There are {guestCount.Count} guests at the party.");
+            Console.WriteLine($"There are {totalGuestCount.Count} guests at the party.");
 
-            return guestCount;
+            return totalGuestCount;
         }
 
         public static string MoreGuests()
@@ -51,9 +53,19 @@ namespace GuestBook
             Console.WriteLine("Are there more guests at the door?");
             Console.Write("Enter yes or no: ");
 
-            string moreGuests = Console.ReadLine();
+            string moreGuests = Console.ReadLine().ToLower();
 
-            return moreGuests.ToLower();
+            if (moreGuests.ToLower() == "yes")
+            {
+                Console.WriteLine("Welcome new guest. What is your name?");
+                Console.Write("Enter your name: ");
+            }
+            else if (moreGuests.ToLower() == "no")
+            {
+                Console.WriteLine($"Great, enjoy the party.");
+            }
+
+            return moreGuests;
         }
     //    public static void WelcomeToParty()
     //    {
