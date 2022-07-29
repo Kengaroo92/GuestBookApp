@@ -2,13 +2,25 @@
 
 //Keep in mind DRY. Don't Repeat Yourself - Use as many methods as you can to avoid repeat code.
 
+GuestBookMethods.PartyGuests();
+
+Console.Write("Are there more guests? ");
+string moreGuests = Console.ReadLine();
+
+while (moreGuests.ToLower() == "yes")
+{
+    GuestBookMethods.PartyGuests();
+}
+
 //Welcome the guests to your party. WelcomeToParty()
 
-GuestBookMethods.WelcomeToParty();
+//GuestBookMethods.WelcomeToParty();
 
 //Ask the guest for their name. - GuestsName()
 
-GuestBookMethods.GuestNames();
+//GuestBookMethods.GuestNames();
+
+//GuestBookMethods.AreThereMoreGuests();
 
 //Ask the guest how many people are in their family and each of their names. - FamilyMemberNames() , FamilyCount()
 
