@@ -8,20 +8,16 @@ namespace GuestBook
 {
     public static class GuestBookMethods
     {
-        public static void PartyGuests()
+        public static (List<string>, int) GuestNames()
         {
-            Console.Write("Welcome! What is your name? ");
-            string initialGuestName = Console.ReadLine();
-
             List<string> guestNames = new List<string>();
 
-            List<int> totalGuestCount = new List<int>();
+            string guestName = Console.ReadLine();
 
-            guestNames.Add(initialGuestName);
-
-            totalGuestCount.Add(1);
+            guestNames.Add(guestName);
 
             Console.Write("How many guests are attending with you? ");
+
             int guestCount = int.Parse(Console.ReadLine());
 
             for (int i = 0; i < guestCount; i++)
@@ -29,23 +25,35 @@ namespace GuestBook
                 Console.Write($"What is the name of guest {i + 1}? ");
                 string guest = Console.ReadLine();
                 guestNames.Add(guest);
-
-                totalGuestCount.Add(guestCount);
             }
 
-            Console.WriteLine($"There are a total of {totalGuestCount.Count} guests, so far.");
+            Console.WriteLine($"So far you have added {guestNames} in the guest book.");
 
+            return (guestNames, guestNames.Count);
         }
 
-        public static void MoreGuests()
+        public static List<int> GuestCount()
         {
-            Console.Write("Are there more guests? ");
+            List<int> guestCount = new List<int>();
+
+            for (int i = 0; i < GuestNames().Item2; i++)
+            {
+                guestCount.Add(i);
+            }
+
+            Console.WriteLine($"There are {guestCount.Count} guests at the party.");
+
+            return guestCount;
+        }
+
+        public static string MoreGuests()
+        {
+            Console.WriteLine("Are there more guests at the door?");
+            Console.Write("Enter yes or no: ");
+
             string moreGuests = Console.ReadLine();
 
-            while (moreGuests.ToLower() == "yes")
-            {
-                PartyGuests();
-            }
+            return moreGuests.ToLower();
         }
     //    public static void WelcomeToParty()
     //    {
